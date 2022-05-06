@@ -112,9 +112,9 @@ int main(){
     
     char *String = NULL;
     
-    String = CargarStrDin1();
+    //String = CargarStrDin1();
     
-    //CargarStrDin2(&String);
+    CargarStrDin2(&String);
     //printf("El string cargado es: %s, y su direccion de memoria es: %p",String,&String);
 
     EscribirArchivo("frase.txt",String);
