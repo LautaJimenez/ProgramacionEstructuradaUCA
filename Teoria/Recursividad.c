@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 /*
 void FuncionRecursiva(int Contador){
     
@@ -125,7 +124,7 @@ int main(){
 
 */
 
-
+/*
 int MultiplicacionRecursiva(int a, int b){
 
     int Resultado;
@@ -151,3 +150,47 @@ int main(){
 
     return 0;
 }
+*/
+
+// CLASE 13/05
+
+/*
+
+//Ejercicio 4 de la guia
+
+void invertirArreglo(int *arreglo, int t){
+
+    int aux;
+    if(t>1){
+        aux = arreglo[t-1];
+        arreglo[t-1] = arreglo[0];
+        arreglo[0] = aux;
+        invertirArreglo(arreglo+1,t-2);
+    }
+}
+
+void ImprimirArreglo(int *arreglo,int t){
+
+    for(int i = 0 ; i<t ; i++){
+        if(i == t-1){
+            printf("%d",arreglo[i]);
+        }
+        else{
+            printf("%d - ",arreglo[i]);
+        }      
+    }
+    printf("\n");
+}
+
+int main(){
+
+    int arreglo[6] = {1,2,3,4,5,6};
+    printf("El arreglo original es: ");
+    ImprimirArreglo(arreglo,6);
+    
+    invertirArreglo(arreglo,6); 
+    printf("El arreglo invertido es: ");
+    ImprimirArreglo(arreglo,6);
+
+}
+*/
