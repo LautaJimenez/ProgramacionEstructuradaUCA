@@ -208,3 +208,100 @@ int main(){
 */
 
 // ------------------------------------------------------------------------------------------------------------------------------
+
+/*
+
+// Ejercicio 5
+
+//A) 
+
+#define TERMINADOR 0
+
+int maxR(int *arreglo){
+
+    int max, maximoRecursivo;
+
+    max = *arreglo;
+
+    if(*arreglo != TERMINADOR){
+        arreglo++;                      // Te desplaza una posicion en el arreglo.
+        maximoRecursivo = maxR(arreglo);
+        if(maximoRecursivo>max && *arreglo != TERMINADOR){
+            max = maximoRecursivo;
+        }
+    }
+
+    return max;
+
+}
+
+//B)
+
+int *memoriaMaxR(int *arreglo){
+
+    int *max = NULL;
+    int * maximoRecursivo = NULL;
+    max = arreglo;
+
+    if(*arreglo != TERMINADOR){
+        arreglo++;                      // Te desplaza una posicion en el arreglo.
+        maximoRecursivo = memoriaMaxR(arreglo);
+        if(*maximoRecursivo>*max && *arreglo != TERMINADOR){
+            max = maximoRecursivo;
+        }
+    }
+    return max;
+}
+
+//A')
+
+int minR(int *arreglo){
+
+    int min, minimoRecursivo;
+
+    min = *arreglo;
+
+    if(*arreglo != TERMINADOR){
+        arreglo++;                      // Te desplaza una posicion en el arreglo.
+        minimoRecursivo = minR(arreglo);
+        if(minimoRecursivo<min && *arreglo != TERMINADOR){
+            min = minimoRecursivo;
+        }
+    }
+
+    return min;
+
+}
+
+//B')
+
+int *memoriaMinR(int *arreglo){
+
+    int *min = NULL;
+    int * minimoRecursivo = NULL;
+    min = arreglo;
+
+    if(*arreglo != TERMINADOR){
+        arreglo++;                      // Te desplaza una posicion en el arreglo.
+        minimoRecursivo = memoriaMinR(arreglo);
+        if(*minimoRecursivo<*min && *arreglo != TERMINADOR){
+            min = minimoRecursivo;
+        }
+    }
+    return min;
+}
+
+int main(){
+
+    int arreglo[6] = {1,88,3,-4,5,TERMINADOR};
+    printf("El maximo numero del arreglo es: %d\n",maxR(arreglo));
+    printf("La direccion de memoria del maximo numero del arreglo es: %p",memoriaMaxR(arreglo));
+
+    printf("\n\nEl minimo numero del arreglo es: %d\n",minR(arreglo));
+    printf("La direccion de memoria del minimo numero del arreglo es: %p",memoriaMinR(arreglo));
+
+}
+
+*/
+
+// ------------------------------------------------------------------------------------------------------------------------------
