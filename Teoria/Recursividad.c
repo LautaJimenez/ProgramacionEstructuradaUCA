@@ -305,3 +305,35 @@ int main(){
 */
 
 // ------------------------------------------------------------------------------------------------------------------------------
+
+
+#define TERMINADOR 0
+
+int *memoriaMinR(int *arreglo){
+
+    int *min = NULL;
+    int *minR = NULL;
+
+    min = arreglo;
+
+    if(*arreglo != TERMINADOR){
+        arreglo++;
+        minR = memoriaMinR(arreglo);
+
+        if(*minR < *min && *arreglo != TERMINADOR){
+            min = minR;
+        }
+    }
+
+    return min;
+}
+
+int main(){
+
+    int arreglo[6] = {800,1,3,-4,5,TERMINADOR};
+    
+    int *PunteroArregloMinimo = memoriaMinR(arreglo); 
+
+    printf("La direccion de memoria del minimo del arreglo [%d] es: %p",*PunteroArregloMinimo,PunteroArregloMinimo);
+
+}
