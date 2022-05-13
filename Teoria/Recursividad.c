@@ -330,7 +330,7 @@ int *memoriaMinR(int *arreglo){
 
 int main(){
 
-    int arreglo[6] = {800,1,3,-4,5,TERMINADOR};
+    int arreglo[6] = {710,1,3,-4,5,TERMINADOR};
     
     int *PunteroArregloMinimo = memoriaMinR(arreglo); 
 
