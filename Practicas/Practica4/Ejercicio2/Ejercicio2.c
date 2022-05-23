@@ -7,7 +7,7 @@ int divisionRecursiva(int a,int b){
 
     int Contador = 0;
     
-    if(a>=b){
+    if(a-b>=0){
         Contador = 1 + divisionRecursiva(a-b,b);
     }
     return Contador;
