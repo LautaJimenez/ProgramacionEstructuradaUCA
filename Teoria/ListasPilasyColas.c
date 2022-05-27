@@ -2,8 +2,11 @@
 #include <stdlib.h>
 
 // RECORDAR: Hacer ejercicios de insertar un elemento ordenado para parcialito (Lo dijo Mariano). Por ejemplo: Tengo una lista A,B,D,E -> Insertar -> A,B,C,D,E.
+// RECORDAR: Hacer ejercicios de Listas, pilas y colas con archivos.
 
 // Los arreglos, tanto en la memoria estatica como dinamica, se pueden recorrer con un for o un while, ya que estan consecutivos en la memoria. Las listas NO.
+
+//________________________________________________________________________________________________________________________________________________
 
 // Clase 20/05
 
@@ -11,6 +14,8 @@
 
 // Una lista es una una estructura secuencial de datos. Cada uno de sus datos, son estructuras, y se definen como nodos.
 // Un nodo es una estructura que tienen 2 elementos -> El contenido de la información, y el puntero al siguiente nodo.
+
+//________________________________________________________________________________________________________________________________________________
 
 // Clase 27/05
 
@@ -23,3 +28,14 @@
 // Push: mete el elemento en la pila. (Es el insertarAdelante en listas). (append en python).
 // Pop: saca el elemento de la pila. Para imprimir una pila, se debe usar el pop para retornar el valor. (pop en python)
 
+//________________________________________________________________________________________________________________________________________________
+
+//Colas:
+
+// El primero que llega, es el primero que se va. Como una fila.
+
+// Funciones a usar:
+
+// queue -> encolar -> Es igual a agregarUltimo en listas.
+
+// enqueue -> desencolar -> Saca el primer elemento que ingresó.
