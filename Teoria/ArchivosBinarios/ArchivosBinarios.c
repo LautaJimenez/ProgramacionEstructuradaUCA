@@ -2,7 +2,7 @@
 
 // fopen (Abrir archivo).
 // fwrite (Escribir archivo).
-// rewind.
+// rewind (Ver bien en ejemplos de codigo).
 // fread (Lee el archivo).
 // fclose (Cierra el archivo).
 
@@ -33,3 +33,4 @@
 
 // ____________________________________________________________________________________________________________________________________________________________________
 
+// Para leer los archivos en hexadecimal, abrir en la web hexed.it
