@@ -79,10 +79,10 @@ int main(){
     ImprimirLista(Lista);
 
     EliminarValorDeLista(&Lista,3);
+    EliminarValorDeLista(&Lista,1);
 
     printf("\n\nLa lista con valores eliminados es: \n");
     ImprimirLista(Lista);
-
 
     return 0;
 }
