@@ -93,7 +93,7 @@ void AgregarPersonaEnLista(tNodo* Lista){
 void ImprimirLista(tNodo Lista){
 
     if(Lista != NULL){
-        printf("Nombre: %s. Apellido: %s. DNI: %d ",Lista->Personas.Nombre,Lista->Personas.Apellido,Lista->Personas.DNI);
+        printf("Nombre: %s. Apellido: %s. DNI: %d ",(Lista)->Personas.Nombre,(Lista)->Personas.Apellido,(Lista)->Personas.DNI);
         ImprimirLista(Lista->Siguiente);
     }
 }
@@ -101,7 +101,7 @@ void ImprimirLista(tNodo Lista){
 
 int main(){
 
-    // TERMINAR CODIGO!! Falta chequear la impresion de la lista.
+    // No se imprime correctamente. Repasar.
 
     tNodo ListaDePersonas;
     ListaDePersonas = NULL;
