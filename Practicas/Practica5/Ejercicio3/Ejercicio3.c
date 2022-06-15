@@ -74,7 +74,6 @@ int main(){
     AgregarValorEnLista(&Lista,63);
     AgregarValorEnLista(&Lista,3);
 
-    
     printf("La lista sin eliminar valores es: \n");
     ImprimirLista(Lista);
 
