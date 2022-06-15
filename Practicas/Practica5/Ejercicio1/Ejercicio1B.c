@@ -59,7 +59,7 @@ void CargarApellidoEnPersona(tPersona Persona){
     Persona.Apellido[i] = '\0';
 }
 
-void CargarPersona(tPersona Persona){
+tPersona CargarPersona(tPersona Persona){
 
     printf("Ingrese DNI: ");
     scanf("%d",&(Persona.DNI));
@@ -70,6 +70,8 @@ void CargarPersona(tPersona Persona){
     fflush(stdin);
     printf("\n");
     CargarApellidoEnPersona(Persona);
+
+    return Persona;
  
 }
 
@@ -80,7 +82,7 @@ void AgregarPersonaEnLista(tNodo* Lista){
     if(*Lista == NULL){
 
         *Lista = malloc(sizeof(struct sNodo));
-        CargarPersona(Persona);
+        Persona = CargarPersona(Persona);
         (*Lista)->Personas = Persona;
         (*Lista)->Siguiente = NULL;
     }
@@ -92,8 +94,11 @@ void AgregarPersonaEnLista(tNodo* Lista){
 
 void ImprimirLista(tNodo Lista){
 
+    tPersona Auxiliar;
+
     if(Lista != NULL){
-        printf("Nombre: %s. Apellido: %s. DNI: %d ",(Lista)->Personas.Nombre,(Lista)->Personas.Apellido,(Lista)->Personas.DNI);
+        Auxiliar = Lista->Personas;
+        printf("Nombre: %s. Apellido: %s. DNI: %d ",Auxiliar.Nombre,Auxiliar.Apellido,Auxiliar.DNI);
         ImprimirLista(Lista->Siguiente);
     }
 }
