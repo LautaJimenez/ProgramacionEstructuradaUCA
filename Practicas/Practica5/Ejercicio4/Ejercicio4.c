@@ -38,10 +38,15 @@ void EliminarListaEntera(tNodo *Lista){
 
 void ImprimirLista(tNodo Lista){
 
+    if(Lista == NULL){
+        printf("La lista esta vacia.");
+    }
+
     if(Lista != NULL){
         printf("%d - ",Lista->Valor);
         ImprimirLista(Lista->Siguiente);
     }
+
 }
 
 int main(){
