@@ -156,14 +156,26 @@ int main(){
 
     Nodo Lista = NULL;
     CargarLista(&Lista,"Informacion.csv");
+    
+    printf("Lista SIN ordenar: \n\n");
     ImprimirLista(Lista);
 
     int Opcion;
 
-    printf("\nIngrese el valor por el que desea ordenar: \n\n1 = DNI 2 = Nombre 3 = Apellido\n\n");
+    printf("\nIngrese el valor por el que desea ordenar: \n\n1 = DNI \n2 = Nombre \n3 = Apellido\n\nSeleccione la opcion: ");
     scanf("%d",&Opcion);
     OrdenarLista(&Lista,Opcion);
+    
+    if(Opcion == 1){
+        printf("\nLista ordenada por DNI: \n\n");
+    }
+    
+    else if(Opcion == 2){
+        printf("\nLista ordenada por nombre: \n\n");
+    }
+    else if(Opcion == 3){
+        printf("\nLista ordenada por apellido: \n\n");
+    }
     ImprimirLista(Lista);
-
     return 0;
 }
