@@ -4,11 +4,24 @@
 #include <conio.h>
 
 struct sNodo{
+    
     int Valor;
     struct sNodo *Siguiente;
 };
 
 typedef struct sNodo *tNodo;
+
+int LargoDeLista(tNodo Lista){
+
+    int Cantidad = 0;
+
+    while(Lista != NULL){
+        Cantidad++;
+        Lista = (Lista->Siguiente);
+    }
+    return Cantidad;
+}
+
 
 void InsertarEnListaUltimo(tNodo *Lista, int Valor){
 
@@ -50,6 +63,8 @@ int main(){
     InsertarEnListaUltimo(&Lista,45);
     printf("Lista: \n\n");
     ImprimirLista(Lista);
+
+    printf("\n\nEl largo de la lista es: %d",LargoDeLista(Lista));
 
     return 0;
 }
