@@ -47,7 +47,9 @@ void LeerCadenaDeArchivo(FILE *Archivo, char ** Cadena, char Separador){
     (*(Cadena))[i] = '\0';
 }
 
-void InsertarEnLista(tNodo *Lista,tContenido Contenido){
+void OrdenarPorDNI(tNodo *Lista,tContenido Contenido){
+
+    tNodo Auxiliar = NULL;
 
     if(*Lista == NULL){
         *Lista = malloc(sizeof(struct sNodo));
@@ -56,11 +58,65 @@ void InsertarEnLista(tNodo *Lista,tContenido Contenido){
     }
 
     else{
-        InsertarEnLista(&(*Lista)->Siguiente,Contenido);
+        if((*Lista)->Contenido.DNI > Contenido.DNI){
+            Auxiliar = malloc(sizeof(struct sNodo));
+            Auxiliar->Siguiente = (*Lista);
+            Auxiliar->Contenido = Contenido;
+            (*Lista) = Auxiliar;
+        }
+        else{
+            OrdenarPorDNI(&(*Lista)->Siguiente,Contenido);
+        }
     }
 }
 
-void CargarEnListaDesdeArchivo(tNodo *Lista, char *NombreArchivo){
+void OrdenarPorNombre(tNodo *Lista,tContenido Contenido){
+
+    tNodo Auxiliar = NULL;
+
+    if(*Lista == NULL){
+        *Lista = malloc(sizeof(struct sNodo));
+        (*Lista)->Contenido = Contenido;
+        (*Lista)->Siguiente = NULL;
+    }
+
+    else{
+        if(strcmp((*Lista)->Contenido.Nombre,Contenido.Nombre) == 1){
+            Auxiliar = malloc(sizeof(struct sNodo));
+            Auxiliar->Siguiente = (*Lista);
+            Auxiliar->Contenido = Contenido;
+            (*Lista) = Auxiliar;
+        }
+        else{
+            OrdenarPorNombre(&(*Lista)->Siguiente,Contenido);
+        }
+    }
+}
+
+void OrdenarPorApellido(tNodo *Lista,tContenido Contenido){
+
+    tNodo Auxiliar = NULL;
+
+    if(*Lista == NULL){
+        *Lista = malloc(sizeof(struct sNodo));
+        (*Lista)->Contenido = Contenido;
+        (*Lista)->Siguiente = NULL;
+    }
+
+    else{
+        if(strcmp((*Lista)->Contenido.Apellido,Contenido.Apellido) == 1){
+            Auxiliar = malloc(sizeof(struct sNodo));
+            Auxiliar->Siguiente = (*Lista);
+            Auxiliar->Contenido = Contenido;
+            (*Lista) = Auxiliar;
+        }
+        else{
+            OrdenarPorApellido(&(*Lista)->Siguiente,Contenido);
+        }
+    }
+}
+
+void CargarEnListaOrdenadaDesdeArchivo(tNodo *Lista, char *NombreArchivo, int Opcion){
 
     FILE *Archivo = fopen(NombreArchivo,"r");
 
@@ -77,7 +133,15 @@ void CargarEnListaDesdeArchivo(tNodo *Lista, char *NombreArchivo){
         Contenido.FechaDeNacimiento.Mes = (FechaAuxiliar/100)%100;
         Contenido.FechaDeNacimiento.Anio = FechaAuxiliar/10000;
 
-        InsertarEnLista(Lista,Contenido);
+        if(Opcion == 1){
+            OrdenarPorDNI(Lista,Contenido);
+        }
+        else if(Opcion == 2){
+            OrdenarPorNombre(Lista,Contenido);
+        }
+        else if(Opcion == 3){
+            OrdenarPorApellido(Lista,Contenido);
+        }
     }
 }
 
@@ -92,8 +156,13 @@ void ImprimirLista(tNodo Lista){
 int main(){
 
     tNodo Lista = NULL;
-    CargarEnListaDesdeArchivo(&Lista,"Informacion.txt");
-    printf("%-20s %-20s %-10s %-5s %-5s %-5s\n\n","Nombre","Apellido","DNI","Dia","Mes","Anio");
+    int Opcion;
+    printf("Ingrese opcion para imprimir la lista: \n\n1: Por DNI\n2: Por nombre\n3: Por apellido");
+    printf("\n\nIngrese opcion: ");
+    scanf("%d",&Opcion);
+
+    CargarEnListaOrdenadaDesdeArchivo(&Lista,"Informacion.txt",Opcion);
+    printf("\n%-20s %-20s %-10s %-5s %-5s %-5s\n\n","Nombre","Apellido","DNI","Dia","Mes","Anio");
     ImprimirLista(Lista);
 
     return 0;
