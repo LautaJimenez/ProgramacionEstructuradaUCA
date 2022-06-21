@@ -116,6 +116,19 @@ void OrdenarPorApellido(tNodo *Lista,tContenido Contenido){
     }
 }
 
+void OrdenarLista(tNodo *Lista, tContenido Contenido, int Opcion){
+    
+    if(Opcion == 1){
+            OrdenarPorDNI(Lista,Contenido);
+        }
+        else if(Opcion == 2){
+            OrdenarPorNombre(Lista,Contenido);
+        }
+        else if(Opcion == 3){
+            OrdenarPorApellido(Lista,Contenido);
+        }
+}
+
 void CargarEnListaOrdenadaDesdeArchivo(tNodo *Lista, char *NombreArchivo, int Opcion){
 
     FILE *Archivo = fopen(NombreArchivo,"r");
@@ -133,15 +146,8 @@ void CargarEnListaOrdenadaDesdeArchivo(tNodo *Lista, char *NombreArchivo, int Op
         Contenido.FechaDeNacimiento.Mes = (FechaAuxiliar/100)%100;
         Contenido.FechaDeNacimiento.Anio = FechaAuxiliar/10000;
 
-        if(Opcion == 1){
-            OrdenarPorDNI(Lista,Contenido);
-        }
-        else if(Opcion == 2){
-            OrdenarPorNombre(Lista,Contenido);
-        }
-        else if(Opcion == 3){
-            OrdenarPorApellido(Lista,Contenido);
-        }
+        OrdenarLista(Lista,Contenido,Opcion);
+        
     }
 }
 
