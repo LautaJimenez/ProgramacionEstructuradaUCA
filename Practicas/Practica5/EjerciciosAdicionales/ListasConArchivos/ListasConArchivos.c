@@ -81,7 +81,7 @@ void OrdenarPorNombre(tNodo *Lista,tContenido Contenido){
     }
 
     else{
-        if(strcmp((*Lista)->Contenido.Nombre,Contenido.Nombre) == 1){
+        if(strcmp((*Lista)->Contenido.Nombre,Contenido.Nombre) > 0){
             Auxiliar = malloc(sizeof(struct sNodo));
             Auxiliar->Siguiente = (*Lista);
             Auxiliar->Contenido = Contenido;
@@ -104,7 +104,7 @@ void OrdenarPorApellido(tNodo *Lista,tContenido Contenido){
     }
 
     else{
-        if(strcmp((*Lista)->Contenido.Apellido,Contenido.Apellido) == 1){
+        if(strcmp((*Lista)->Contenido.Apellido,Contenido.Apellido) > 0){
             Auxiliar = malloc(sizeof(struct sNodo));
             Auxiliar->Siguiente = (*Lista);
             Auxiliar->Contenido = Contenido;
