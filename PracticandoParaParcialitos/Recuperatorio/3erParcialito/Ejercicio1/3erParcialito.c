@@ -63,6 +63,31 @@ void CargarALista( tInformacion ContenidoAuxiliar,tNodo *Lista){
     }
 }
 
+// Funcion donde ya se inserta el contenido en la lista ordenado por DNI.
+
+void CargarAListaOrdenadoPorAnio(tInformacion ContenidoAuxiliar, tNodo *Lista){
+
+    tNodo Auxiliar = NULL;
+
+    if(*Lista == NULL){
+        *Lista = malloc(sizeof(struct sNodo));
+        (*Lista)->Contenido = ContenidoAuxiliar;
+        (*Lista)->Siguiente = NULL;
+    }
+    else{
+        if((*Lista)->Contenido.FechaDeNacimiento.Anio > ContenidoAuxiliar.FechaDeNacimiento.Anio){
+            Auxiliar = malloc(sizeof(struct sNodo));
+            Auxiliar->Contenido = ContenidoAuxiliar;
+            Auxiliar->Siguiente = (*Lista);
+            (*Lista) = Auxiliar;
+        }
+        else{
+            CargarAListaOrdenadoPorAnio(ContenidoAuxiliar,&(*Lista)->Siguiente);
+        }
+    }
+}
+
+
 void CargarArchivoEnLista(char *NombreArchivo, tNodo *Lista){
 
     FILE *Archivo = fopen(NombreArchivo,"r");
@@ -81,7 +106,8 @@ void CargarArchivoEnLista(char *NombreArchivo, tNodo *Lista){
         ContenidoAuxiliar.FechaDeNacimiento.Mes = (FechaDeNacimientoAuxiliar/100)%100;
         ContenidoAuxiliar.FechaDeNacimiento.Anio = FechaDeNacimientoAuxiliar/10000;
 
-        CargarALista(ContenidoAuxiliar,Lista);
+        //CargarALista(ContenidoAuxiliar,Lista);
+        CargarAListaOrdenadoPorAnio(ContenidoAuxiliar,Lista);
     }
 }
 
@@ -214,6 +240,8 @@ int main(){
     ImprimirCabeceras();
     ImprimirLista(Lista);
 
+    /*
+
     int Opcion;
     printf("Elige la opcion para ordenar la lista:\n\n1: Por DNI\n2: Por nombre\n3: Por apellido\n4: Por año de nacimiento\n\nOpcion: ");
     scanf("%d",&Opcion);
@@ -226,6 +254,9 @@ int main(){
 
     // Se tienen que eliminar las personas que nacieron entre 1968 (sin incluir) y 2000 (sin incluir).
 
+    */
+
+    EliminarDeLaListaPorValor(&Lista,1968,2000);
     EliminarDeLaListaPorValor(&Lista,1968,2000);
     printf("\n\n");
     ImprimirCabeceras();
